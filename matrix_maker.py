@@ -12,6 +12,7 @@ License: GNU GPLv3 http://www.gnu.org/licenses/gpl.html
 
 
 import argparse
+import Bio
 import csv
 import os
 import sys
@@ -282,7 +283,7 @@ def main():
         unaligned_file = open(gene.name + ".fasta", "w")
         for taxon in taxa:
             record = taxon.get_longest_seq(gene.name, max_seq_length)
-            if record != None:
+            if type(record) == Bio.SeqRecord.SeqRecord:
                 # output format: >binomial_accession_description
                 description = taxon.binomial + "_" + record.id + "_" + record.description
                 description = description.replace(" ", "_")
@@ -315,7 +316,7 @@ def main():
         for gene in genes:
             # each column will be the longest sequences accession
             record = taxon.get_longest_seq(gene.name, max_seq_length)
-            if record != None:    
+            if type(record) == Bio.SeqRecord.SeqRecord:
                 accessions += record.id + ","
             else:
                 accessions += ","
