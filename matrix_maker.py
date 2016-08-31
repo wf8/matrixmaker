@@ -165,7 +165,7 @@ def main():
     # parse the command line arguments
     parser = argparse.ArgumentParser()
     parser.add_argument("--email", "-e", help="Email address for NCBI database searches.")
-    parser.add_argument("--genes", "-g", help="Text file that contains a list of all gene names.")
+    parser.add_argument("--genes", "-g", help="Text file that defines the gene regions of interest using both include and exclude terms.")
     parser.add_argument("--max_seq_length", "-m", help="Optional. Sets the maximum sequence length to include. Use this to exclude genomes.")
     parser.add_argument("--species", "-s", help="Text file that contains a list of all species binomials and their synonyms.")
     parser.add_argument("--taxids", "-t", help="Optional. Text file that contains a list of all taxids. Use this to avoid repeating the NCBI taxid lookups.")
