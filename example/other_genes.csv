@@ -1,0 +1,14 @@
+ITS,include,ITS,Its,its,internal transcribed spacer
+ITS,exclude,ETS
+matK,include,matK,matk,Matk,MATK,maturase K
+matR,include,matR,matR,MATR,matr,MatR
+ndhF,include,ndhF,Ndhf,ndhf,Ndhf
+ndhF,exclude,rps15,rpL32,ndhf-trnL,rpl32
+rbcL,include,rbcL,Rbcl,rbcl,RBCL
+rbcl,exclude,atpB,atpb,ATPB,Atpb
+trnL-trnF,include,trnL-trnF,trnL-F
+trnL-trnF,exclude,trnT-trnL
+18S,include,18S
+18S,exclude,internal transcribed spacer,external transcribed spacer,ITS1,ITS2,ETS,genomic DNA fragment containing 25S-18S rRNA intergenic spacer,pseudogene,probable,M.glaucescens,genomic DNA containing 26S-18S,A33.9041,strain PI232131,
+atpB,include,atpB,AtpB
+atpB,exclude,atpB-rbcL,rbcl-atpB,rbcL-atpB,atpB/rbcL,rbcL
