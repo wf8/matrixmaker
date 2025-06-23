@@ -17,7 +17,8 @@ import csv
 import os
 import sys
 import time
-import urllib
+import urllib.parse
+import urllib.request
 import re
 from Bio import Entrez
 from Bio import SeqIO
@@ -65,8 +66,8 @@ class Taxon(object):
             'rettype': 'xml',
         }
         url = 'http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?'
-        url = url + urllib.urlencode(params)
-        data = urllib.urlopen(url).read()
+        url = url + urllib.parse.urlencode(params)
+        data = urllib.request.urlopen(url).read().decode('utf-8')
         if re.search('<Id>(\S+)</Id>', data):
             self.taxid = re.search('<Id>(\S+)</Id>', data).group(1)
         else:
@@ -81,8 +82,8 @@ class Taxon(object):
                     'rettype': 'xml',
                 }
                 url = 'http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?'
-                url = url + urllib.urlencode(params)
-                data = urllib.urlopen(url).read()
+                url = url + urllib.parse.urlencode(params)
+                data = urllib.request.urlopen(url).read().decode('utf-8')
                 if re.search('<Id>(\S+)</Id>', data):
                     self.taxid = re.search('<Id>(\S+)</Id>', data).group(1)
                     break
@@ -197,7 +198,7 @@ def main():
         # format of file:
         # gene_name,include,rbcL,RBCL
         # gene_name,exclude,RRRBCL
-        with open(args.genes, 'rb') as csvfile:
+        with open(args.genes, 'r') as csvfile:
             genereader = csv.reader(csvfile, delimiter=",")
             for row in genereader:
                 if row[1] == "include":
@@ -219,7 +220,7 @@ def main():
     # check for taxid
     print("Checking for taxids csv file...")
     if args.taxids and os.path.isfile(args.taxids):
-        with open(args.taxids, 'rb') as csvfile:
+        with open(args.taxids, 'r') as csvfile:
             print("Found taxids csv file, reading taxids...\n")
             taxidsreader = csv.reader(csvfile, delimiter=",")
             for row in taxidsreader:
@@ -228,7 +229,7 @@ def main():
         print("No taxids csv file found.\n")
 
     # open species list file, get synonyms and any missing taxids
-    with open(args.species, 'rb') as csvfile:
+    with open(args.species, 'r') as csvfile:
         print("Checking list of species, getting missing taxids from NCBI...")
         taxids_file = open("taxids.csv", "w")
         namesreader = csv.reader(csvfile, delimiter=",")

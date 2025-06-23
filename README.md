@@ -10,12 +10,12 @@ Freyman, W.A. and A.H. Thornhill. 2016. Matrix Maker [Computer software]. Retrie
 
 ### Other stuff:
 
-Copyright 2016 Will Freyman - freyman@berkeley.edu  
+Copyright 2016 Will Freyman - willfreyman@gmail.com
 License: GNU GPLv3 http://www.gnu.org/licenses/gpl.html
 
 ### Requirements:
 
-    Python 2.7
+    Python 3+
     Biopython
     MAFFT v6.9+
 
