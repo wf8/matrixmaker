@@ -284,7 +284,7 @@ def main():
         unaligned_file = open(gene.name + ".fasta", "w")
         for taxon in taxa:
             record = taxon.get_longest_seq(gene.name, max_seq_length)
-            if type(record) == Bio.SeqRecord.SeqRecord:
+            if type(record) == Bio.SeqRecord.SeqRecord and record.seq is not None:
                 # output format: >binomial_accession_description
                 description = taxon.binomial + "_" + record.id + "_" + record.description
                 description = description.replace(" ", "_")
